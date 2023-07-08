@@ -6,11 +6,11 @@ import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
 
 @Entity
-data class Coupon(
+class Coupon(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id: Long? = null,
+    val id: Long? = null,
 
-    var userId: Long,
+    val userId: Long,
 ) {
 }
