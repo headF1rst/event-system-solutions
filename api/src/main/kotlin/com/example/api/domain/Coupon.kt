@@ -7,10 +7,10 @@ import jakarta.persistence.Id
 
 @Entity
 class Coupon(
+    var userId: Long,
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long? = null,
-
-    val userId: Long,
+    var id: Long? = null,
 ) {
 }
