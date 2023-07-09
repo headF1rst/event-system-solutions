@@ -63,6 +63,9 @@ subprojects {
         //Redis
         implementation("org.springframework.boot:spring-boot-starter-data-redis")
 
+        // Kafka
+        implementation("org.springframework.kafka:spring-kafka")
+
         // Test
         testImplementation("org.springframework.boot:spring-boot-starter-test")
     }
