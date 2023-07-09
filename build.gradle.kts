@@ -60,6 +60,9 @@ subprojects {
         // MySQL
         runtimeOnly("com.mysql:mysql-connector-j")
 
+        //Redis
+        implementation("org.springframework.boot:spring-boot-starter-data-redis")
+
         // Test
         testImplementation("org.springframework.boot:spring-boot-starter-test")
     }
