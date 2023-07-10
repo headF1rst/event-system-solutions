@@ -60,8 +60,9 @@ subprojects {
         // MySQL
         runtimeOnly("com.mysql:mysql-connector-j")
 
-        //Redis
+        // Redis
         implementation("org.springframework.boot:spring-boot-starter-data-redis")
+        implementation("org.redisson:redisson-spring-boot-starter:3.21.1")
 
         // Kafka
         implementation("org.springframework.kafka:spring-kafka")

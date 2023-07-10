@@ -1,6 +1,7 @@
 package com.example.api.service
 
 import com.example.api.domain.Coupon
+import com.example.api.producer.CouponCreateProducer
 import com.example.api.repository.CouponCountRepository
 import com.example.api.repository.CouponRepository
 import org.springframework.stereotype.Service
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service
 class ApplyService(
     val couponRepository: CouponRepository,
     val couponCountRepository: CouponCountRepository,
+    val couponCreateProducer: CouponCreateProducer,
 ) {
 
     fun apply(userId: Long) {
@@ -20,6 +22,6 @@ class ApplyService(
             }
         }
 
-        couponRepository.save(Coupon(userId))
+        couponCreateProducer.create(userId)
     }
 }
