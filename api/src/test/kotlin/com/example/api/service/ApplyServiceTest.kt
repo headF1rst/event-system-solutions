@@ -40,9 +40,35 @@ class ApplyServiceTest @Autowired constructor(
         }
 
         latch.await()
+        Thread.sleep(10000)
 
         val count = couponRepository.count()
 
         assertThat(count).isEqualTo(100)
+    }
+
+    @Test
+    fun 함명당_한개의쿠폰만_발급() {
+        val threadCount = 1000
+        val executorService = Executors.newFixedThreadPool(32)
+        val latch = CountDownLatch(threadCount)
+
+        for (i in 1 .. threadCount) {
+            val userId = i.toLong()
+            executorService.submit {
+                try {
+                    applyService.apply(1L)
+                } finally {
+                    latch.countDown()
+                }
+            }
+        }
+
+        latch.await()
+        Thread.sleep(10000)
+
+        val count = couponRepository.count()
+
+        assertThat(count).isEqualTo(1)
     }
 }
