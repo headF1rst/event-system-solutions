@@ -24,5 +24,11 @@ class KafkaConsumerConfig {
         return DefaultKafkaConsumerFactory(config)
     }
 
+    @Bean
+    fun kafkaListenerContainerFactory(): ConcurrentKafkaListenerContainerFactory<String, Long> {
+        val factory = ConcurrentKafkaListenerContainerFactory<String, Long>()
+        factory.consumerFactory = consumerFactory()
 
+        return factory
+    }
 }
